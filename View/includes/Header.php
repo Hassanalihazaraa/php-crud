@@ -10,4 +10,5 @@
     <title>CRUD</title>
 </head>
 <body>
-<header class="text-center"><h1>Welcome To Becode</h1></header>
+<header class="text-center jumbotron jumbotron-fluid bg-custom font-weight-bold" style=" background-color: #4ec1bc;">
+    <h1>Welcome To Becode</h1></header>

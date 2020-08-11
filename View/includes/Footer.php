@@ -1,4 +1,8 @@
-<footer class="text-center">
+<footer class="text-center fixed-bottom page-footer bg-custom" style="
+    background-color: goldenrod;
+    font-family: 'Zilla Slab', serif;
+    padding-top: 30px;
+    padding-bottom: 30px;">
     &copy; BeCode <?php echo date('Y') ?>
 </footer>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
