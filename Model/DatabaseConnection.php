@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 class DatabaseConnection
 {
-    public function connect(): PDO
+    public static function connect(): PDO
     {
         try {
             $databaseHost = "localhost";

@@ -1,10 +1,8 @@
 <?php
 declare(strict_types=1);
 
-require_once 'includes/header.php';
+require_once 'includes/Header.php';
 ?>
-    <div>
 
-    </div>
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once 'includes/Footer.php'; ?>

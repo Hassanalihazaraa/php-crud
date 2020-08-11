@@ -1,4 +1,4 @@
-<footer>
+<footer class="text-center">
     &copy; BeCode <?php echo date('Y') ?>
 </footer>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

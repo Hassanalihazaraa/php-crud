@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-class AddStudent
+class StudentController
 {
     public function render()
     {
-        require_once 'View/AddStudent.php';
+        require_once 'View/student.view.php';
     }
 }
