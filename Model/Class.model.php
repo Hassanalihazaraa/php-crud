@@ -1,5 +1,8 @@
 <?php
 declare(strict_types=1);
+ini_set('display_errors','1');
+ini_set('display_startup_errors','1');
+error_reporting(E_ALL);
 
 class ClassModel
 {
@@ -58,6 +61,7 @@ class ClassModel
 
     //create class
     public function save(PDO $data)
+
     {
         $handle = $data->prepare('INSERT INTO class(name, location,teacher_id) VALUES (:name, :location, :teacher_id)');
         $handle->bindValue('name', $this->getName());
@@ -71,6 +75,7 @@ class ClassModel
     public function saveClass()
     {
         (empty($this->getId())) ? $this->save(DatabaseConnection::connect()) : $this->editClass(DatabaseConnection::connect());
+
     }
 
     //edit class
