@@ -9,7 +9,7 @@ class StudentController
             $classLoader = new ClassLoader();
             $classes = $classLoader->getClass();
         }
-        if (isset($_POST['submit']) === 'create') {
+        if ($_POST['submit'] === "create") {
             $fullName = htmlspecialchars(trim($_POST['name']));
             $email = htmlspecialchars(trim($_POST['email']));
             $classId = (int)$_POST['class'];

@@ -12,6 +12,7 @@ class StudentLoader extends DatabaseConnection
         $students = $handle->fetchAll();
         foreach ($students as $student) {
             $this->student[$student['id']] = new Student((int)$student['id'], (string)$student['name'], (string)$student['email'], (int)$student['class_id']);
+
         }
     }
 

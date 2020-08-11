@@ -6,7 +6,7 @@ require_once 'View/includes/Header.php';
 
 <?php if (isset($_POST['submit'])) {
     echo '<div class="alert alert-success" role="alert">
-              Your form is submitted <a href="?page=student" class="alert-link"Back to Student</a>
+              Your form is submitted!
           </div>';
 } else {
     echo '<div class="alert alert-danger" role="alert">
@@ -36,7 +36,7 @@ require_once 'View/includes/Header.php';
                     <div class="col-md-4 mb-3">
                         <label for="validationServer04">Class</label>
                         <select class="custom-select class" name="class" id="validationServer04"
-                                aria-describedby="validationServer04Feedback" required>
+                                aria-describedby="validationServer04Feedback">
                             <option selected disabled value="">Choose a class</option>
                             <?php
                             /** @var ClassModel[] $classes */

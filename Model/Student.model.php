@@ -8,7 +8,7 @@ class Student
     private string $email;
     private ?int $class_id;
 
-    public function __construct(?int $id, string $name, string $email, ?int $class_id)
+    public function __construct(string $name, string $email, ?int $class_id = null, ?int $id = null)
     {
         $this->id = $id;
         $this->name = $name;
@@ -57,9 +57,9 @@ class Student
     }
 
     //create students
-    public function createStudent(DatabaseConnection $data)
+    public function save(PDO $data)
     {
-        $handle = $data->connect()->prepare('INSERT INTO student(name, email, class_id) VALUES (:name, : email, :class_id)');
+        $handle = $data->prepare('INSERT INTO student(name, email, class_id) VALUES (:name, :email, :class_id)');
         $handle->bindValue('name', $this->getName());
         $handle->bindValue('email', $this->getEmail());
         $handle->bindValue('class_id', $this->getClassId());
@@ -70,13 +70,13 @@ class Student
     //save students
     public function saveStudent()
     {
-        (empty($this->getId())) ? $this->createStudent(DatabaseConnection::connect()) : $this->editStudent(DatabaseConnection::connect());
+        (empty($this->getId())) ? $this->save(DatabaseConnection::connect()) : $this->editStudent(DatabaseConnection::connect());
     }
 
     //edit students
-    public function editStudent(DatabaseConnection $data)
+    public function editStudent(PDO $data)
     {
-        $handle = $data->connect()->prepare('UPDATE student SET name = :name, email = : email, class_id = :class_id WHERE id = :id');
+        $handle = $data->prepare('UPDATE student SET name = :name, email = : email, class_id = :class_id WHERE id = :id');
         $handle->bindValue('name', $this->getName());
         $handle->bindValue('email', $this->getEmail());
         $handle->bindValue('class_id', $this->getClassId());
@@ -85,9 +85,9 @@ class Student
     }
 
     //delete students
-    public function deleteStudent(DatabaseConnection $data)
+    public function deleteStudent(PDO $data)
     {
-        $handle = $data->connect()->prepare('DELETE FROM student WHERE id = :id');
+        $handle = $data->prepare('DELETE FROM student WHERE id = :id');
         $handle->bindValue('id', $this->getId());
         $handle->execute();
     }

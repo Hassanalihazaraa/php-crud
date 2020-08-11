@@ -7,7 +7,7 @@ class classLoader extends DatabaseConnection
 
     public function __construct()
     {
-        $handle = DatabaseConnection::connect()->prepare('SELECT class.id, class.name, class.location FROM class LEFT JOIN teacher ON class.teacher_id = teacher.id');
+        $handle = DatabaseConnection::connect()->prepare('SELECT class.id, class.name, class.location, class.teacher_id FROM class LEFT JOIN teacher ON class.teacher_id = teacher.id');
         $handle->execute();
         $classes = $handle->fetchAll();
         foreach ($classes as $class) {
