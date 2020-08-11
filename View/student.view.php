@@ -4,16 +4,13 @@ declare(strict_types=1);
 require_once 'View/includes/Header.php';
 ?>
 
-<?php if (isset($_POST['submit'])) {
-    echo '<div class="alert alert-success" role="alert">
-              Your form is submitted!
-          </div>';
-} else {
-    echo '<div class="alert alert-danger" role="alert">
-             Please the form and try again!
-          </div>';
-}
-?>
+<?php if (isset($_POST['submit'])): ?>
+    <?php
+    echo '
+    <div class="alert alert-success text-center" role="alert">
+        Your form is submitted! <a href="?page=student">Back to Form</a>
+    </div>'; ?>
+<?php else: ?>
     <section class="container-fluid">
         <h2 class="text-center mb-5">Create a new student</h2>
         <form method="post">
@@ -55,5 +52,5 @@ require_once 'View/includes/Header.php';
             </section>
         </form>
     </section>
-
+<?php endif; ?>
 <?php require_once 'View/includes/Footer.php'; ?>
