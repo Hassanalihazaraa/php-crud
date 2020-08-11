@@ -57,9 +57,9 @@ class ClassModel
     }
 
     //create class
-    public function createClass(DatabaseConnection $data)
+    public function save(PDO $data)
     {
-        $handle = $data->connect()->prepare('INSERT INTO class(name, location,teacher_id) VALUES (:name, :location, :teacher_id)');
+        $handle = $data->prepare('INSERT INTO class(name, location,teacher_id) VALUES (:name, :location, :teacher_id)');
         $handle->bindValue('name', $this->getName());
         $handle->bindValue('location', $this->getLocation());
         $handle->bindValue('teacher_id', $this->getTeacherId());
@@ -70,13 +70,13 @@ class ClassModel
     //save class
     public function saveClass()
     {
-        (empty($this->getId())) ? $this->createClass(DatabaseConnection::connect()) : $this->editClass(DatabaseConnection::connect());
+        (empty($this->getId())) ? $this->save(DatabaseConnection::connect()) : $this->editClass(DatabaseConnection::connect());
     }
 
     //edit class
-    public function editClass(DatabaseConnection $data)
+    public function editClass(PDO $data)
     {
-        $handle = $data->connect()->prepare('UPDATE class SET name = :name, location = :location ,teacher_id = :teacher_id WHERE id = :id');
+        $handle = $data->prepare('UPDATE class SET name = :name, location = :location ,teacher_id = :teacher_id WHERE id = :id');
         $handle->bindValue('name', $this->getName());
         $handle->bindValue('location', $this->getLocation());
         $handle->bindValue('teacher_id', $this->getTeacherId());
@@ -85,9 +85,9 @@ class ClassModel
     }
 
     //delete class
-    public function deleteClass(DatabaseConnection $data)
+    public function deleteClass(PDO $data)
     {
-        $handle = $data->connect()->prepare('DELETE FROM class WHERE id = :id');
+        $handle = $data->prepare('DELETE FROM class WHERE id = :id');
         $handle->bindValue('id', $this->getId());
         $handle->execute();
     }

@@ -57,7 +57,7 @@ class Student
     }
 
     //create students
-    public function save(PDO $data)
+    public function saveStudent(PDO $data)
     {
         $handle = $data->prepare('INSERT INTO student(name, email, class_id) VALUES (:name, :email, :class_id)');
         $handle->bindValue('name', $this->getName());
@@ -68,13 +68,13 @@ class Student
     }
 
     //save students
-    public function saveStudent()
+    public function save()
     {
-        (empty($this->getId())) ? $this->save(DatabaseConnection::connect()) : $this->editStudent(DatabaseConnection::connect());
+        (empty($this->getId())) ? $this->saveStudent(DatabaseConnection::connect()) : $this->update(DatabaseConnection::connect());
     }
 
     //edit students
-    public function editStudent(PDO $data)
+    public function update(PDO $data)
     {
         $handle = $data->prepare('UPDATE student SET name = :name, email = : email, class_id = :class_id WHERE id = :id');
         $handle->bindValue('name', $this->getName());
@@ -85,7 +85,7 @@ class Student
     }
 
     //delete students
-    public function deleteStudent(PDO $data)
+    public function delete(PDO $data)
     {
         $handle = $data->prepare('DELETE FROM student WHERE id = :id');
         $handle->bindValue('id', $this->getId());

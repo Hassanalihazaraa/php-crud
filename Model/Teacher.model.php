@@ -4,7 +4,7 @@ declare(strict_types=1);
 class Teacher extends Student
 {
     //create teachers
-    public function createTeacher(DatabaseConnection $data)
+    public function createTeacher(PDO $data)
     {
         $handle = $data->connect()->prepare('INSERT INTO teacher(name, email) VALUES (:name, : email)');
         $handle->bindValue('name', $this->getName());
@@ -14,13 +14,13 @@ class Teacher extends Student
     }
 
     //save teachers
-    public function saveTeacher()
+    public function save()
     {
-        (empty($this->getId())) ? $this->createTeacher(DatabaseConnection::connect()) : $this->editTeacher(DatabaseConnection::connect());
+        (empty($this->getId())) ? $this->createTeacher(DatabaseConnection::connect()) : $this->update(DatabaseConnection::connect());
     }
 
     //edit teachers
-    public function editTeacher(DatabaseConnection $data)
+    public function update(PDO $data)
     {
         $handle = $data->connect()->prepare('UPDATE teacher SET name = :name, email = : email WHERE id = :id');
         $handle->bindValue('name', $this->getName());
@@ -30,7 +30,7 @@ class Teacher extends Student
     }
 
     //delete teachers
-    public function deleteTeacher(DatabaseConnection $data)
+    public function delete(PDO $data)
     {
         $handle = $data->connect()->prepare('DELETE FROM teacher WHERE id = :id');
         $handle->bindValue('id', $this->getId());

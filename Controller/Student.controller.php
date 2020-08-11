@@ -17,7 +17,7 @@ class StudentController
             if ($classId !== 0) {
                 $students->setClassId($classId);
             }
-            $students->saveStudent(DatabaseConnection::connect());
+            $students->save(DatabaseConnection::connect());
         }
         require_once 'View/student.view.php';
     }

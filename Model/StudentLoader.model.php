@@ -7,11 +7,11 @@ class StudentLoader extends DatabaseConnection
 
     public function __construct()
     {
-        $handle = DatabaseConnection::connect()->prepare('SELECT student.id, student.name, student.email FROM student LEFT JOIN class ON student.class_id = class.id');
+        $handle = DatabaseConnection::connect()->prepare('SELECT student.id, student.name, student.email student.class_id FROM student LEFT JOIN class ON student.class_id = class.id');
         $handle->execute();
         $students = $handle->fetchAll();
         foreach ($students as $student) {
-            $this->student[$student['id']] = new Student((int)$student['id'], (string)$student['name'], (string)$student['email'], (int)$student['class_id']);
+            $this->student[$student['id']] = new Student((string)$student['name'], (string)$student['email'], (int)$student['id'], (int)$student['class_id']);
 
         }
     }
