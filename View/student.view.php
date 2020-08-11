@@ -50,7 +50,8 @@ require_once 'View/includes/Header.php';
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-primary w-100" type="submit" value="submit">Create a new student</button>
+                <button class="btn btn-primary w-100" type="submit" name="submit" value="create">Create a new student
+                </button>
             </section>
         </form>
     </section>
